@@ -1,5 +1,12 @@
 ---
 import LinkInline from "./LinkInline.astro"
+import TechTag from "./TechTag.astro"
+
+interface Tag {
+  text: string
+  iconName?: string
+  color?: string
+}
 
 interface Props {
   title: string
@@ -7,9 +14,10 @@ interface Props {
   description: string
   link?: string
   date: string
+  tags?: (string | Tag)[]
 }
 
-const { title, company, description, link, date } = Astro.props
+const { title, company, description, link, date, tags = [] } = Astro.props
 ---
 
 <div
@@ -24,6 +32,19 @@ const { title, company, description, link, date } = Astro.props
       <h3 class="text-xl font-bold text-yellow-400">{title}</h3>
       <h4 class="font-semibold text-xl text-gray-600 dark:text-white">{company}</h4>
       <time class="p-0 m-0 text-sm text-gray-600/80 dark:text-white/80">{date}</time>
+      
+      {tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mt-3">
+          {tags.map((tag) => {
+            const tagText = typeof tag === 'string' ? tag : tag.text
+            const tagIconName = typeof tag === 'string' ? undefined : tag.iconName
+            const tagColor = typeof tag === 'string' ? undefined : tag.color
+            return (
+              <TechTag text={tagText} iconName={tagIconName} color={tagColor} />
+            )
+          })}
+        </div>
+      )}
     </div>
   </div>
   <div class="relative flex flex-col gap-2 pb-4 text-gray-600 dark:text-gray-300 md:col-span-3">
