@@ -5,6 +5,8 @@ import AWS from "./icons/AWS.astro"
 import Docker from "./icons/Docker.astro"
 import GCloud from "./icons/Gcloud.astro"
 import Code from "./icons/Code.astro"
+import Pytorch from "./icons/Pytorch.astro"
+import DialogFlow from "./icons/DialogFlow.astro"
 
 interface Props {
   text: string
@@ -17,7 +19,9 @@ const { text, iconName, color = "default" } = Astro.props
 const getIcon = (name: string) => {
   switch (name) {
     case 'Python': return Python
+    case 'Pytorch': return Pytorch
     case 'React': return React
+    case 'Dialogflow': return DialogFlow
     case 'AWS': return AWS
     case 'Docker': return Docker
     case 'GCloud': return GCloud
