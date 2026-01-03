@@ -1,0 +1,30 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import SectionContainer from "@/components/SectionContainer.astro"
+import TitleSection from "@/components/TitleSection.astro"
+import Projects from "@/components/Projects.astro"
+import CodeIcon from "@/components/icons/Code.astro"
+---
+
+<Layout
+  title="Projects - Martí Grau"
+  description="Explore the projects developed by Martí Grau, specializing in AI and Computer Vision."
+>
+  <main class="px-4">
+    <SectionContainer id="projects" class="py-16 md:py-36">
+      <TitleSection>
+        <CodeIcon class="size-8" />
+        Projects
+      </TitleSection>
+      <div class="flex flex-col items-center justify-center p-10 border border-dashed border-gray-300 dark:border-gray-700 rounded-xl bg-gray-50/50 dark:bg-white/5">
+        <div class="p-4 bg-yellow-500/10 rounded-full mb-4">
+          <CodeIcon class="size-10 text-yellow-500" />
+        </div>
+        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Projects In Construction</h3>
+        <p class="text-center text-gray-600 dark:text-gray-400 max-w-md">
+          I'm currently curating and documenting my most impactful work in Generative AI and Computer Vision. Check back soon for the full showcase!
+        </p>
+      </div>
+    </SectionContainer>
+  </main>
+</Layout>

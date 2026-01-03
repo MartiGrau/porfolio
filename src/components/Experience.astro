@@ -3,88 +3,89 @@ import ExperienceItem from "./ExperienceItem.astro"
 
 const EXPERIENCE = [
   {
-    date: "Sept 2023 - present",
+    date: "Sep 2023 - Present",
     title: "AI Lead",
     company: "Napptilus Tech Labs",
     companyUrl: "https://napptilus.com/",
-    description: `As AI Lead at Napptilus Tech Labs, I lead the development and deployment of Generative AI solutions for enterprise clients. I manage and mentor the AI team, deliver projects on time, and design advanced systems such as RAG pipelines and LLM-based solutions. My role bridges business needs and technical execution, ensuring impactful and scalable AI products.`,
-    featuredLink: {
-      enable: true,
-      name: "Napptilus AI Labs",
-      url: "https://ai.napptilus.com/"
-    },
+    link: "https://napptilus.com/tech-ai-consulting",
+    description: `
+      <ul class="list-disc space-y-2 ml-4">
+        <li>🎯 Direct the strategy and technical execution for <strong>cutting-edge Generative AI solutions</strong> across diverse industrial sectors.</li>
+        <li>👥 Coordinate a <strong>multidisciplinary team</strong> to define, architect, and deploy scalable AI system solutions, spanning data pipelines, model orchestration, and production inference.</li>
+        <li>⚙️ Manage the <strong>full lifecycle of AI products</strong>, from hands-on R&D to scalable production deployment.</li>
+        <li>🚀 Drive the adoption of <strong>state-of-the-art GenAI models</strong> and AI tooling through continuous model scouting, rapid experimentation, and <strong>fine-tuning</strong> on domain-specific data to maximize real-world impact.</li>
+      </ul>
+    `,
     tags: [
-      { text: "Team Leadership", color: "green" },
+      { text: "Strategy", color: "green" },
       { text: "Generative AI", iconName: "Code", color: "purple" },
-      { text: "Docker", iconName: "Docker", color: "blue" },
-      { text: "GCloud", iconName: "GCloud", color: "orange" },
-      { text: "AWS", iconName: "AWS", color: "orange" },
+      { text: "LLMs", color: "blue" },
+      { text: "RAG", color: "orange" },
+      { text: "Leadership", color: "yellow" },
     ]
   },
   {
-    date: "Feb 2021 - present",
-    title: "Co-Founder - Computer Vision Engineer",
+    date: "Feb 2021 - Dec 2025",
+    title: "Co-Founder & Founding AI Engineer",
     company: "StageInHome",
     companyUrl: "https://stageinhome.com/",
-    description: `🚀 Co-Founder at StageInHome. Led R&D and product development, building innovative Computer Vision and AI solutions for interior design. Managed a tech team, delivered production-ready ML/DL algorithms, and drove business growth through cutting-edge technology.`,
-    featuredLink: {
-      enable: true,
-      url: "https://stageinhome.com/"
-    },
-    info: {
-      enable: true,
-      content: "This was my entrepreneurship project thanks to my Degree thesis."
-    },
+    link: "https://stageinhome.com/",
+    description: `
+      <ul class="list-disc space-y-2 ml-4">
+        <li>🏗️ Founded and led the <strong>end-to-end AI pipeline</strong>, from dataset design and curation to model training, validation, and production deployment.</li>
+        <li>👁️ Designed and trained Generative Computer Vision systems, focusing on <strong>diffusion models</strong> and <strong>conditioning strategies</strong> for controllable, spatial-aware image generation.</li>
+        <li>🔌 Built and maintained <strong>production-ready APIs</strong> enabling seamless integration between AI models and web-based products.</li>
+        <li>☁️ Architected and operated <strong>AI infrastructure on AWS</strong>, including parallel training, Dockerized services, and auto-scaling inference pipelines.</li>
+        <li>📚 Acted as the <strong>technical GenAI reference</strong>, tracking <strong>state-of-the-art models</strong> and driving informed adoption across the team.</li>
+        <li>🎤 Represented the technical vision in startup accelerators and investor pitches, <strong>translating complex systems into clear business value</strong>.</li>
+        <li>🤝 <strong>Mentored and onboarded</strong> junior AI engineers, defining development standards and fostering strong engineering practices.</li>
+      </ul>
+    `,
     tags: [
       { text: "Entrepreneurship", color: "green" },
-      { text: "Docker", iconName: "Docker", color: "blue" },
-      { text: "PyTorch", iconName: "Pytorch", color: "yellow" },
+      { text: "Diffusion Models", color: "purple" },
+      { text: "Computer Vision", color: "blue" },
       { text: "AWS", iconName: "AWS", color: "orange" },
     ]
   },
   {
     date: "Mar 2019 - Feb 2021",
-    title: "Computer Vision & Machine Learning engineer.",
+    title: "R&D on GenAI",
     company: "Napptilus Tech Labs",
     companyUrl: "https://napptilus.com/",
-    description: `💡 Kickstarted my career in Computer Vision & Machine Learning at Napptilus Tech Labs. 
-* Developed innovative CV/ML algorithms that led to the creation of StageInHome (now a startup).
-* Joined the team after excelling in my degree thesis on image style transfer for interiors.
-* Contributed to multiple AI projects, driving impactful solutions for real-world applications.`,
-    featuredLink: {
-      enable: true,
-      url: "https://napptilus.com/"
-    },
-    info: {
-      enable: false
-    },
+    link: "https://napptilus.com/",
+    description: `
+      <ul class="list-disc space-y-2 ml-4">
+        <li>🔬 Researched and developed novel <strong>Generative Adversarial Networks (GANs)</strong> for image style transfer within indoor environments.</li>
+        <li>🧪 Successfully <strong>prototyped the core technology</strong> that led to the founding of the startup <strong>StageInHome</strong>.</li>
+        <li>💡 Developed and integrated multiple <strong>machine learning models</strong> for internal innovation projects.</li>
+      </ul>
+    `,
     tags: [
       { text: "R&D", color: "green" },
-      { text: "Python", iconName: "Python", color: "yellow" },
-      { text: "Pytorch", iconName: "Pytorch", color: "yellow" },
-      { text: "AWS", iconName: "AWS", color: "orange" },
+      { text: "GANs", color: "purple" },
+      { text: "PyTorch", iconName: "Pytorch", color: "yellow" },
+      { text: "Python", iconName: "Python", color: "blue" },
     ]
   },
   {
     date: "Jul 2018 - Dec 2018",
-    title: "Operations Team Member Internship",
+    title: "Operations Team Member",
     company: "Accenture",
     companyUrl: "https://www.accenture.com/es-es",
-    description: `I was part of the Operations team in the Smart Recipe Hub project for Nestle, where I was in charge of dealing with the main platform issues while developing the new features for the project.
-
-The Smart Recipe Hub (SRH) was developed for unifying all of Nestlé's culinary recipes under one single format and management process, and for ensuring complete nutritional information for all recipes in a secure, manageable way.
-Additionally, I was part of the team who developed a specific chatbot using Python and Google Dialogflow services.`,
-    featuredLink: {
-      enable: true,
-      url: "https://aws.nestle.recipes/"
-    },
+    link: "https://aws.nestle.recipes/",
+    description: `
+      <ul class="list-disc space-y-2 ml-4">
+        <li>🍳 Contributed to the <strong>Smart Recipe Hub</strong> project for <strong>Nestlé</strong>, handling technical feature development and platform troubleshooting.</li>
+        <li>🤖 Developed and deployed a <strong>custom chatbot</strong> leveraging Python and Google Dialogflow services.</li>
+      </ul>
+    `,
     tags: [
       { text: "Operations", color: "green" },
       { text: "Python", iconName: "Python", color: "yellow" },
       { text: "Dialogflow", iconName: "Dialogflow", color: "blue" },
     ]
   },
-
 ]
 ---
 

@@ -3,13 +3,14 @@ import Layout from "@/layouts/Layout.astro"
 
 import AboutMe from "@/components/AboutMe.astro"
 import Briefcase from "@/components/icons/Briefcase.astro"
-import CodeIcon from "@/components/icons/Code.astro"
 import Experience from "@/components/Experience.astro"
 import ProfileCheck from "@/components/icons/ProfileCheck.astro"
-import Projects from "@/components/Projects.astro"
 import SectionContainer from "@/components/SectionContainer.astro"
 import Hero from "@/components/Hero.astro"
 import TitleSection from "@/components/TitleSection.astro"
+import MailIcon from "@/components/icons/Mail.astro"
+import LinkedInIcon from "@/components/icons/LinkedIn.astro"
+import SocialPill from "@/components/SocialPill.astro"
 ---
 
 <Layout
@@ -18,9 +19,7 @@ import TitleSection from "@/components/TitleSection.astro"
 >
   <main class="px-4">
     <SectionContainer class="py-16 md:py-36">
-      <Hero>
-      </slot>
-    </Hero>
+      <Hero />
     </SectionContainer>
     <div class="space-y-24">
     <SectionContainer id="experience">
@@ -30,21 +29,38 @@ import TitleSection from "@/components/TitleSection.astro"
       </TitleSection>
       <Experience />
     </SectionContainer>
-    <!--
-    <SectionContainer id="projects">
-      <TitleSection>
-        <CodeIcon class="size-7" />
-        Projects
-      </TitleSection>
-      <Projects />
-    </SectionContainer>
-    -->
+
+
+
     <SectionContainer id="about-me">
       <TitleSection>
         <ProfileCheck class="size-8" />
         About me
       </TitleSection>
       <AboutMe />
+    </SectionContainer>
+
+    <SectionContainer id="contact">
+      <TitleSection>
+        <MailIcon class="size-8" />
+        Contact
+      </TitleSection>
+      <div class="flex flex-col gap-y-4 text-lg text-gray-800 dark:text-gray-300">
+        <p>
+          I'm always open to new opportunities and interesting projects in the AI field. 
+          Feel free to reach out to me!
+        </p>
+        <nav class="flex flex-wrap gap-4 mt-4">
+          <SocialPill href="mailto:marti.grau2@gmail.com">
+            <MailIcon class="size-4" />
+            Get in Touch
+          </SocialPill>
+          <SocialPill href="https://www.linkedin.com/in/martigrau96/">
+            <LinkedInIcon class="size-4" />
+            LinkedIn
+          </SocialPill>
+        </nav>
+      </div>
     </SectionContainer>
   </div>
   </main>

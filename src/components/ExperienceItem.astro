@@ -25,9 +25,9 @@ const { title, company, description, link, date, tags = [] } = Astro.props
 >
   <div class="relative pb-12 md:col-span-2">
     <div class="sticky top-0">
-      <span class="text-yellow-400 -left-[42px] absolute rounded-full text-5xl"
-        >&bull;</span
-      >
+      <div
+        class="absolute -left-[34px] top-2 size-3 -translate-x-1/2 rounded-full bg-yellow-400 shadow-sm"
+      ></div>
 
       <h3 class="text-xl font-bold text-yellow-400">{title}</h3>
       <h4 class="font-semibold text-xl text-gray-600 dark:text-white">{company}</h4>
@@ -47,12 +47,14 @@ const { title, company, description, link, date, tags = [] } = Astro.props
       )}
     </div>
   </div>
-  <div class="relative flex flex-col gap-2 pb-4 text-gray-600 dark:text-gray-300 md:col-span-3">
-    {description}
+  <div
+    class="relative flex flex-col gap-2 pb-4 text-gray-600 dark:text-gray-300 md:col-span-3 dark:[&_strong]:text-yellow-200 [&_strong]:text-yellow-500 [&_strong]:font-semibold"
+  >
+    <div set:html={description} />
     {
       link && (
         <LinkInline href={link}>
-          Saber más{" "}
+          View details{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="w-5 icon icon-tabler icon-tabler-chevron-right"

@@ -13,3 +13,9 @@ Thanks to [midudev](https://github.com/midudev/porfolio.dev) for the original pr
 
 
 <p></p>
+
+Run the following command to start the development server:
+
+```bash
+pnpm dev
+```

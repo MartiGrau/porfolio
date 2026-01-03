@@ -5,22 +5,27 @@ const navItems = [
   {
     title: "Experience",
     label: "experience",
-    url: "/#experience",
+    url: `${import.meta.env.BASE_URL}/#experience`,
   },
   {
     title: "Projects",
     label: "projects",
-    url: "/#ptojects",
+    url: `${import.meta.env.BASE_URL}/projects`,
+  },
+  {
+    title: "My blog",
+    label: "blog",
+    url: "https://martigrau.notion.site/mgrau-Blog-696cd1b98c62455d8bf6cbff96ba0bae",
   },
   {
     title: "About me",
     label: "about-me",
-    url: "/#about-me",
+    url: `${import.meta.env.BASE_URL}/#about-me`,
   },
   {
     title: "Contact",
     label: "contact",
-    url: "https://www.linkedin.com/in/martigrau96/",
+    url: `${import.meta.env.BASE_URL}/#contact`,
   },
 ]
 ---
@@ -29,14 +34,16 @@ const navItems = [
   class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
 >
   <nav
-    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
+    class="flex px-2 sm:px-3 text-xs sm:text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
   >
     {
       navItems.map((link) => (
         <a
-          class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
+          class="relative block px-1.5 sm:px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500 whitespace-nowrap"
           aria-label={link.label}
           href={link.url}
+          target={link.url.startsWith("http") ? "_blank" : "_self"}
+          rel={link.url.startsWith("http") ? "noopener noreferrer" : ""}
         >
           {link.title}
         </a>
