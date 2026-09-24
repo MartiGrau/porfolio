@@ -10,19 +10,27 @@ import CodeIcon from "@/components/icons/Code.astro"
   description="Explore the projects developed by Martí Grau, specializing in AI and Computer Vision."
 >
   <main class="px-4">
-    <SectionContainer id="projects" class="py-16 md:py-36">
-      <TitleSection>
-        <CodeIcon class="size-8" />
+    <SectionContainer id="projects" class="pt-32 pb-16 md:pt-44">
+      <TitleSection index="// work in progress">
+        <CodeIcon class="size-8 text-violet-500" />
         Projects
       </TitleSection>
-      <div class="flex flex-col items-center justify-center p-10 border border-dashed border-gray-300 dark:border-gray-700 rounded-xl bg-gray-50/50 dark:bg-white/5">
-        <div class="p-4 bg-yellow-500/10 rounded-full mb-4">
-          <CodeIcon class="size-10 text-yellow-500" />
+      <div class="reveal glass spotlight flex flex-col items-center justify-center p-10 sm:p-16">
+        <div class="relative mb-6">
+          <div class="absolute -inset-4 rounded-full bg-gradient-to-tr from-violet-500 to-cyan-400 opacity-40 blur-xl animate-pulse"></div>
+          <div class="relative flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-cyan-400 text-white shadow-lg">
+            <CodeIcon class="size-8" />
+          </div>
         </div>
-        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Projects In Construction</h3>
-        <p class="text-center text-gray-600 dark:text-gray-400 max-w-md">
-          I'm currently curating and documenting my most impactful work in Generative AI and Computer Vision. Check back soon for the full showcase!
+        <p class="font-mono text-sm text-violet-600 dark:text-violet-300">training<span class="animate-blink">_</span></p>
+        <h3 class="mt-2 text-2xl font-bold text-gray-900 dark:text-white">Projects coming soon</h3>
+        <p class="mt-3 max-w-md text-center text-gray-600 dark:text-gray-400">
+          I'm putting together my most impactful work in Generative AI, LLM agents and Computer Vision.
+          Check back soon for the full showcase!
         </p>
+        <div class="mt-8 h-1.5 w-full max-w-xs overflow-hidden rounded-full bg-black/5 dark:bg-white/10">
+          <div class="h-full w-2/3 rounded-full bg-gradient-to-r from-violet-500 via-cyan-400 to-emerald-400 bg-[length:200%_100%] animate-gradient-x"></div>
+        </div>
       </div>
     </SectionContainer>
   </main>

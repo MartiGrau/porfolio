@@ -3,7 +3,31 @@ import ExperienceItem from "./ExperienceItem.astro"
 
 const EXPERIENCE = [
   {
-    date: "Sep 2023 - Present",
+    date: "2026 - Present",
+    title: "AI Lead",
+    company: "REVEL",
+    companyUrl: "https://www.driverevel.com/",
+    link: "https://www.driverevel.com/",
+    current: true,
+    description: `
+      <ul class="list-disc space-y-2 ml-4">
+        <li>🧭 Own the <strong>AI product vision, roadmap and long-term strategy</strong> at REVEL, one of Spain's leading car renting and subscription companies.</li>
+        <li>🤖 Lead the design and delivery of <strong>LLM-powered agents and assistants</strong> that automate customer experience and internal operations.</li>
+        <li>🏗️ Design and build <strong>end-to-end AI infrastructure</strong>, from data pipelines to scalable cloud architectures with auto-scaling and production reliability.</li>
+        <li>🔌 Connect AI with the company's systems and data through <strong>tool integrations and MCP servers</strong>, so every team can use AI safely in its daily work.</li>
+        <li>🌱 Drive <strong>AI adoption and culture</strong> across the organization, prioritizing use cases by business impact.</li>
+      </ul>
+    `,
+    tags: [
+      { text: "AI Strategy", color: "green" },
+      { text: "LLM Agents", iconName: "Code", color: "purple" },
+      { text: "MCP", color: "blue" },
+      { text: "MLOps", color: "orange" },
+      { text: "Leadership", color: "yellow" },
+    ]
+  },
+  {
+    date: "Sep 2023 - 2026",
     title: "AI Lead",
     company: "Napptilus Tech Labs",
     companyUrl: "https://napptilus.com/",
@@ -89,7 +113,7 @@ const EXPERIENCE = [
 ]
 ---
 
-<ol class="relative mt-16">
+<ol class="relative mt-12">
   {
     EXPERIENCE.map((experience) => (
       <li>

@@ -1,0 +1,21 @@
+---
+const ROWS = [
+  ["Python", "PyTorch", "Hugging Face", "Diffusers", "LLM APIs", "AI Agents", "MCP", "RAG", "Vector DBs", "Fine-tuning", "Prompt Engineering", "Evals"],
+  ["AWS", "SageMaker", "Lambda", "ECS", "ECR", "S3", "Docker", "Google Cloud", "FastAPI", "Data Pipelines", "Auto-scaling", "CI/CD"],
+]
+---
+
+<div class="relative flex flex-col gap-4 overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]">
+  {
+    ROWS.map((row, i) => (
+      <div class="flex w-max animate-marquee gap-3 hover:[animation-play-state:paused]" style={i % 2 ? "animation-direction: reverse" : ""}>
+        {[...row, ...row].map((item) => (
+          <span class="glass !rounded-full whitespace-nowrap px-4 py-2 font-mono text-sm text-gray-700 dark:text-gray-200">
+            <span class="text-violet-500">#</span>
+            {item}
+          </span>
+        ))}
+      </div>
+    ))
+  }
+</div>

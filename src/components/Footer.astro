@@ -2,27 +2,16 @@
 const currentYear = new Date().getFullYear()
 ---
 
-<footer
-  class="opacity-80 m-4 min-[375px]:pl-4 md:pl-0 mt-16 w-full mx-auto container lg:max-w-4xl md:max-w-2xl mb-10 flex justify-center"
->
-  <div
-    class="rounded-lg w-full max-w-screen-xl mx-auto md:flex md:items-center md:justify-between py-4"
-  >
-    <span class="text-sm sm:text-center text-zinc-800/90 dark:text-zinc-200/90"
-      >&copy; {currentYear}
-      <a href={`${import.meta.env.BASE_URL}/`} class="hover:underline">mgrau</a>
+<footer class="mx-auto mt-24 mb-10 w-full px-4 container lg:max-w-5xl md:max-w-2xl">
+  <div class="flex flex-col gap-3 border-t border-black/5 pt-6 text-sm text-gray-500 dark:border-white/10 dark:text-gray-400 md:flex-row md:items-center md:justify-between">
+    <span class="font-mono">
+      &copy; {currentYear} <a href={`${import.meta.env.BASE_URL}/`} class="hover:text-violet-500">Martí Grau</a>
+      <span class="text-gray-400 dark:text-gray-600">· built with Astro + a bit of AI</span>
     </span>
-    <ul
-      class="flex flex-wrap items-center mt-3 text-sm font-medium dark:text-white/90 sm:mt-0"
-    >
-      <li>
-        <a href={`${import.meta.env.BASE_URL}/#about-me`} class="hover:underline me-4 md:me-6">About me</a>
-      </li>
-      <li>
-        <a id="contacto" href="mailto:marti.grau2@gmail.com" class="hover:underline"
-          >Contacto</a
-        >
-      </li>
+    <ul class="flex flex-wrap items-center gap-5 font-medium">
+      <li><a href={`${import.meta.env.BASE_URL}/#about-me`} class="hover:text-violet-500">About</a></li>
+      <li><a href="https://www.linkedin.com/in/martigrau96/" target="_blank" rel="noopener noreferrer" class="hover:text-violet-500">LinkedIn</a></li>
+      <li><a href="mailto:marti.grau2@gmail.com" class="hover:text-violet-500">Contact</a></li>
     </ul>
   </div>
 </footer>

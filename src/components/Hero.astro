@@ -1,47 +1,202 @@
 ---
 const personalImageAlt = "Martí Grau"
-import Badge from "@/components/Badge.astro"
 import LinkedInIcon from "@/components/icons/LinkedIn.astro"
 import MailIcon from "@/components/icons/Mail.astro"
 import SocialPill from "@/components/SocialPill.astro"
+
+const ROLES = ["AI Lead @ REVEL", "LLM & Agents Architect", "GenAI Engineer", "Startup Co-founder"]
+
+const STATS = [
+  { value: "7+", label: "years building AI" },
+  { value: "1", label: "AI startup co-founded" },
+  { value: "3", label: "AI leadership roles" },
+]
 ---
 
-<div class="max-w-xl">
-  <div class="flex gap-4 mb-4">
-    <img
-      class="rounded-full shadow-lg size-16"
-      src={`${import.meta.env.BASE_URL}/me.png`}
-      alt={personalImageAlt}
-    />
-    <a
-      href="https://www.linkedin.com/in/martigrau96/"
-      target="_blank"
-      rel="noopener"
-      class="flex items-center transition md:justify-center md:hover:scale-105"
+<div class="grid items-center gap-12 lg:grid-cols-[1.15fr_1fr]">
+  <div>
+    <div class="flex items-center gap-4 mb-6 reveal">
+      <div class="relative">
+        <div class="absolute -inset-1 rounded-full bg-gradient-to-tr from-violet-500 via-cyan-400 to-emerald-400 blur-sm opacity-70 animate-pulse"></div>
+        <img
+          class="relative rounded-full size-16 ring-2 ring-white dark:ring-[#07060f] object-cover"
+          src={`${import.meta.env.BASE_URL}/me.png`}
+          alt={personalImageAlt}
+          width="64"
+          height="64"
+        />
+      </div>
+      <a
+        href="https://www.linkedin.com/in/martigrau96/"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 font-mono text-xs text-emerald-700 transition hover:scale-105 dark:text-emerald-300"
+      >
+        <span class="relative flex size-2">
+          <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
+          <span class="relative inline-flex size-2 rounded-full bg-emerald-500"></span>
+        </span>
+        status: building AI @ REVEL
+      </a>
+    </div>
+
+    <h1 class="text-4xl font-bold tracking-tight sm:text-6xl reveal" style="--delay: 80ms">
+      Hey, I'm <span class="text-gradient">Martí Grau</span>
+    </h1>
+
+    <p class="mt-4 h-8 font-mono text-lg text-violet-600 dark:text-violet-300 sm:text-xl reveal" style="--delay: 160ms">
+      <span class="text-gray-400 dark:text-gray-500">&gt;</span>
+      <span id="typed-role" data-roles={JSON.stringify(ROLES)}>{ROLES[0]}</span><span
+        class="ml-0.5 inline-block w-2.5 h-5 translate-y-0.5 bg-violet-500 animate-blink"
+      ></span>
+    </p>
+
+    <p
+      class="mt-6 text-lg text-gray-700 dark:text-gray-300 [&>strong]:font-semibold [&>strong]:text-gray-900 dark:[&>strong]:text-white text-pretty reveal"
+      style="--delay: 240ms"
     >
-      <Badge>Seeking new challenges</Badge>
-    </a>
+      <strong>AI Lead at REVEL</strong>, turning <strong>LLMs and AI agents</strong> into real products that move the business.
+      Telecom engineer and <strong>co-founder of StageInHome</strong>, working with <strong>generative AI since 2019</strong>,
+      from diffusion models and GANs to production LLM systems on the cloud.
+    </p>
+
+    <nav class="flex flex-wrap gap-3 mt-8 reveal" style="--delay: 320ms">
+      <SocialPill href="mailto:marti.grau2@gmail.com">
+        <MailIcon class="size-4" />
+        Get in Touch
+      </SocialPill>
+      <SocialPill href="https://www.linkedin.com/in/martigrau96/">
+        <LinkedInIcon class="size-4" />
+        LinkedIn
+      </SocialPill>
+    </nav>
+
+    <dl class="grid grid-cols-3 gap-4 mt-10 max-w-md reveal" style="--delay: 400ms">
+      {
+        STATS.map(({ value, label }) => (
+          <div>
+            <dt class="text-3xl font-bold text-gradient">{value}</dt>
+            <dd class="mt-1 text-xs leading-tight text-gray-500 dark:text-gray-400">{label}</dd>
+          </div>
+        ))
+      }
+    </dl>
   </div>
-  <h1
-    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
-  >
-    Hey, I'm Martí Grau
-  </h1>
-  <p
-    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
-  >
-    <strong>AI Lead</strong> and <strong>Co-founder</strong> with over <strong>+5 years of experience</strong>. 
-    Currently driving innovation in <strong>Generative AI</strong> at Napptilus Tech Labs and StageInHome, 
-    specializing in bridging technical excellence with clear business value.
-  </p>
-  <nav class="flex flex-wrap gap-4 mt-8">
-    <SocialPill href="mailto:marti.grau2@gmail.com">
-      <MailIcon class="size-4" />
-      Get in Touch
-    </SocialPill>
-    <SocialPill href="https://www.linkedin.com/in/martigrau96/">
-      <LinkedInIcon class="size-4" />
-      LinkedIn
-    </SocialPill>
-  </nav>
+
+  <!-- Terminal-style "agent run" card -->
+  <div class="reveal" style="--delay: 300ms">
+    <div class="glass shadow-2xl shadow-violet-500/10">
+      <div class="flex items-center gap-2 border-b border-black/5 px-4 py-3 dark:border-white/10">
+        <span class="size-3 rounded-full bg-red-400/80"></span>
+        <span class="size-3 rounded-full bg-yellow-400/80"></span>
+        <span class="size-3 rounded-full bg-green-400/80"></span>
+        <span class="ml-2 font-mono text-xs text-gray-500 dark:text-gray-400">~/marti/agent.py</span>
+      </div>
+      <pre
+        id="agent-terminal"
+        class="min-h-[300px] whitespace-pre-wrap p-5 font-mono text-[13px] leading-relaxed text-gray-700 dark:text-gray-300"><code></code></pre>
+    </div>
+  </div>
 </div>
+
+<script>
+  const LINES: [string, string][] = [
+    ["cmd", "$ python agent.py --goal \"ship AI that matters\""],
+    ["dim", "▸ loading context: 7y of GenAI experience"],
+    ["dim", "▸ tools: [llms, rag, agents, mcp, diffusion, aws]"],
+    ["ok", "✓ planner ready"],
+    ["", ""],
+    ["key", "thought:"],
+    ["", "  Understand the business problem first."],
+    ["", "  Pick the simplest model that solves it."],
+    ["", "  Measure, iterate, scale."],
+    ["", ""],
+    ["key", "action:"],
+    ["", "  deploy(agent, env=\"production\", autoscale=True)"],
+    ["ok", "✓ running in production"],
+    ["", ""],
+    ["accent", "→ Let's build something together."],
+  ]
+
+  const COLORS: Record<string, string> = {
+    cmd: "text-gray-900 dark:text-white",
+    dim: "text-gray-400 dark:text-gray-500",
+    ok: "text-emerald-600 dark:text-emerald-400",
+    key: "text-violet-600 dark:text-violet-300",
+    accent: "text-cyan-600 dark:text-cyan-300 font-semibold",
+    "": "",
+  }
+
+  let roleTimer: ReturnType<typeof setTimeout> | undefined
+  let termTimer: ReturnType<typeof setTimeout> | undefined
+
+  const typeRoles = () => {
+    const el = document.getElementById("typed-role")
+    if (!el) return
+    const roles: string[] = JSON.parse(el.dataset.roles ?? "[]")
+    let roleIndex = 0
+    let charIndex = roles[0]?.length ?? 0
+    let deleting = true
+
+    const tick = () => {
+      const current = roles[roleIndex]
+      charIndex += deleting ? -1 : 1
+      el.textContent = current.slice(0, charIndex)
+
+      let delay = deleting ? 35 : 70
+      if (!deleting && charIndex === current.length) {
+        deleting = true
+        delay = 2200
+      } else if (deleting && charIndex === 0) {
+        deleting = false
+        roleIndex = (roleIndex + 1) % roles.length
+        delay = 300
+      }
+      roleTimer = setTimeout(tick, delay)
+    }
+    roleTimer = setTimeout(tick, 2200)
+  }
+
+  const typeTerminal = () => {
+    const code = document.querySelector("#agent-terminal code")
+    if (!code) return
+    code.innerHTML = ""
+    let line = 0
+    let char = 0
+    let span: HTMLSpanElement | null = null
+
+    const tick = () => {
+      if (line >= LINES.length) return
+      const [kind, text] = LINES[line]
+      if (!span) {
+        span = document.createElement("span")
+        span.className = `block min-h-[1.5em] ${COLORS[kind]}`
+        code.appendChild(span)
+      }
+      if (char < text.length) {
+        // Stream several characters at once, like LLM tokens
+        char = Math.min(text.length, char + Math.ceil(Math.random() * 3))
+        span.textContent = text.slice(0, char)
+        termTimer = setTimeout(tick, 18)
+      } else {
+        line++
+        char = 0
+        span = null
+        termTimer = setTimeout(tick, kind === "cmd" ? 500 : 140)
+      }
+    }
+    tick()
+  }
+
+  document.addEventListener("astro:page-load", () => {
+    clearTimeout(roleTimer)
+    clearTimeout(termTimer)
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const code = document.querySelector("#agent-terminal code")
+      if (code) code.textContent = LINES.map(([, t]) => t).join("\n")
+      return
+    }
+    typeRoles()
+    typeTerminal()
+  })
+</script>
