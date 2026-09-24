@@ -1,61 +1,44 @@
 ---
-const personalImageAlt = "Martí Grau";
+const personalImageAlt = "Martí Grau"
 ---
 
-<article
-  class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row"
->
+<article class="flex flex-col items-center gap-10 text-gray-700 dark:text-gray-300 md:flex-row md:items-start">
   <div
-    class="[&>p]:mb-4 [&>p>strong]:text-yellow-500 dark:[&>p>strong]:text-yellow-100 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
+    class="reveal order-2 text-pretty leading-relaxed md:order-1 [&>p]:mb-4 [&_strong]:font-semibold [&_strong]:text-gray-900 dark:[&_strong]:text-violet-200 [&_a]:underline [&_a]:decoration-violet-500/50 [&_a]:underline-offset-4 hover:[&_a]:decoration-violet-500"
   >
     <p>
-      My name is Martí Grau, and I have over <strong
-        >+5 years of experience in the AI field</strong
-      >. Since 2019, I have been deeply involved in generative AI, focusing on
-      integrating advanced technologies into specialized sectors through the
-      startup <a
-        href="https://stageinhome.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="underline font-mono">StageInHome</a
-      >.
+      I'm Martí, a <strong>Telecommunications Engineer</strong> from Barcelona who has been working with
+      <strong>generative AI since 2019</strong>, long before it was everywhere. I started doing research on GANs for interior
+      design, and that prototype turned into
+      <a href="https://stageinhome.com" target="_blank" rel="noopener noreferrer">StageInHome</a>, the startup I co-founded
+      and where I led all the AI for almost five years.
     </p>
-
     <p>
-      I stay up-to-date with the latest advancements in generative AI, including <strong
-        >generative image models</strong
-      > like StyleGAN and Diffusion models, as well as <strong
-        >Large Language Models (LLMs)</strong
-      >. My hands-on experience with API deployments and AWS MLOps has enabled
-      me to build <strong>auto-scaling services</strong> for these models, leveraging
-      AWS services such as S3, Lambda, SageMaker, ECR, ECS, and more.
+      Along the way I've trained <strong>diffusion models</strong>, built <strong>production APIs</strong> and set up
+      <strong>auto-scaling AI services on AWS</strong>. Later, as AI Lead at
+      <a href="https://napptilus.com/" target="_blank" rel="noopener noreferrer">Napptilus Tech Labs</a>, I led a
+      multidisciplinary team shipping <strong>LLM and RAG solutions</strong> for clients in many different industries.
     </p>
-
     <p>
-      As a co-founder of <a
-        href="https://stageinhome.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="underline font-mono">StageInHome</a
-      >, I have successfully managed projects that blend technical expertise
-      with innovation, delivering impactful results. Currently, as <strong
-        >AI Lead at <a
-          href="https://napptilus.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="underline font-mono">Napptilus Tech Labs</a
-        ></strong
-      >, I continue to drive forward-thinking AI solutions, fostering innovation
-      and excellence.
+      Today I'm <strong>AI Lead at <a href="https://www.driverevel.com/" target="_blank" rel="noopener noreferrer">REVEL</a></strong>,
+      where I define the AI strategy and build <strong>agents and AI infrastructure</strong> that people actually use every
+      day. What I enjoy most is finding the simplest AI solution that has a real impact, and then making it reliable in
+      production.
+    </p>
+    <p>
+      When I'm not building, I write about AI on my
+      <a href="https://martigrau.notion.site/mgrau-Blog-696cd1b98c62455d8bf6cbff96ba0bae" target="_blank" rel="noopener noreferrer">blog</a>.
     </p>
   </div>
 
-  <img
-    width="200"
-    height="200"
-    src={`${import.meta.env.BASE_URL}/profile-final.png`}
-    alt={personalImageAlt}
-    class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-black/20 dark:bg-yellow-500/5 ring-1 ring-black/70 dark:ring-white/20"
-    style="object-position: 50% 50%"
-  />
+  <div class="reveal relative order-1 shrink-0 md:order-2" style="--delay: 150ms">
+    <div class="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-violet-500 via-cyan-400 to-emerald-400 opacity-40 blur-2xl"></div>
+    <img
+      width="256"
+      height="256"
+      src={`${import.meta.env.BASE_URL}/profile-final.png`}
+      alt={personalImageAlt}
+      class="relative w-64 aspect-square rotate-3 rounded-3xl object-cover p-1.5 ring-1 ring-black/10 transition duration-500 hover:rotate-0 hover:scale-105 bg-white/60 dark:bg-white/5 dark:ring-white/15"
+    />
+  </div>
 </article>

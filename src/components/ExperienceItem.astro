@@ -11,44 +11,68 @@ interface Tag {
 interface Props {
   title: string
   company: string
+  companyUrl?: string
   description: string
   link?: string
   date: string
+  current?: boolean
   tags?: (string | Tag)[]
 }
 
-const { title, company, description, link, date, tags = [] } = Astro.props
+const { title, company, companyUrl, description, link, date, current = false, tags = [] } = Astro.props
 ---
 
 <div
-  class="relative mx-12 pb-12 grid before:absolute before:left-[-35px] before:block before:h-full before:border-l-2 before:border-black/20 dark:before:border-white/15 before:content-[''] md:grid-cols-5 md:gap-10 md:space-x-4]"
+  class="reveal relative ml-6 md:ml-10 pb-14 grid before:absolute before:-left-6 md:before:-left-10 before:top-3 before:block before:h-full before:w-px before:bg-gradient-to-b before:from-violet-500/60 before:via-cyan-400/30 before:to-transparent before:content-[''] md:grid-cols-5 md:gap-10"
 >
-  <div class="relative pb-12 md:col-span-2">
-    <div class="sticky top-0">
-      <div
-        class="absolute -left-[34px] top-2 size-3 -translate-x-1/2 rounded-full bg-yellow-400 shadow-sm"
-      ></div>
+  <div class="relative pb-6 md:col-span-2">
+    <div class="md:sticky md:top-24">
+      <span
+        class:list={[
+          "absolute top-2 -translate-x-1/2 size-3 rounded-full ring-4 ring-slate-50 dark:ring-[#07060f]",
+          "-left-6 md:-left-10",
+          current ? "bg-emerald-400 shadow-[0_0_16px_4px_rgba(16,185,129,0.6)]" : "bg-violet-500 shadow-[0_0_12px_2px_rgba(139,92,246,0.5)]",
+        ]}
+      ></span>
 
-      <h3 class="text-xl font-bold text-yellow-400">{title}</h3>
-      <h4 class="font-semibold text-xl text-gray-600 dark:text-white">{company}</h4>
-      <time class="p-0 m-0 text-sm text-gray-600/80 dark:text-white/80">{date}</time>
-      
-      {tags.length > 0 && (
-        <div class="flex flex-wrap gap-2 mt-3">
-          {tags.map((tag) => {
-            const tagText = typeof tag === 'string' ? tag : tag.text
-            const tagIconName = typeof tag === 'string' ? undefined : tag.iconName
-            const tagColor = typeof tag === 'string' ? undefined : tag.color
-            return (
-              <TechTag text={tagText} iconName={tagIconName} color={tagColor} />
-            )
-          })}
-        </div>
-      )}
+      <time class="font-mono text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">{date}</time>
+      {
+        current && (
+          <span class="ml-2 inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-emerald-600 ring-1 ring-emerald-500/30 dark:text-emerald-300">
+            <span class="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            now
+          </span>
+        )
+      }
+      <h3 class="mt-1 text-xl font-bold text-gradient">{title}</h3>
+      <h4 class="text-xl font-semibold text-gray-800 dark:text-white">
+        {
+          companyUrl ? (
+            <a href={companyUrl} target="_blank" rel="noopener noreferrer" class="hover:underline decoration-violet-500/50 underline-offset-4">
+              {company}
+            </a>
+          ) : (
+            company
+          )
+        }
+      </h4>
+
+      {
+        tags.length > 0 && (
+          <div class="flex flex-wrap gap-2 mt-4">
+            {tags.map((tag) => {
+              const tagText = typeof tag === "string" ? tag : tag.text
+              const tagIconName = typeof tag === "string" ? undefined : tag.iconName
+              const tagColor = typeof tag === "string" ? undefined : tag.color
+              return <TechTag text={tagText} iconName={tagIconName} color={tagColor} />
+            })}
+          </div>
+        )
+      }
     </div>
   </div>
   <div
-    class="relative flex flex-col gap-2 pb-4 text-gray-600 dark:text-gray-300 md:col-span-3 dark:[&_strong]:text-yellow-200 [&_strong]:text-yellow-500 [&_strong]:font-semibold"
+    class="glass spotlight relative flex flex-col gap-3 p-6 text-gray-600 dark:text-gray-300 md:col-span-3 [&_strong]:font-semibold [&_strong]:text-gray-900 dark:[&_strong]:text-violet-200"
   >
     <div set:html={description} />
     {
@@ -57,7 +81,7 @@ const { title, company, description, link, date, tags = [] } = Astro.props
           View details{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="w-5 icon icon-tabler icon-tabler-chevron-right"
+            class="w-5 transition-transform group-hover:translate-x-1"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -67,10 +91,8 @@ const { title, company, description, link, date, tags = [] } = Astro.props
             stroke-linecap="round"
             stroke-linejoin="round"
           >
-            <>
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M9 6l6 6l-6 6" />
-            </>
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M9 6l6 6l-6 6" />
           </svg>
         </LinkInline>
       )

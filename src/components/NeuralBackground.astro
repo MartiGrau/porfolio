@@ -1,0 +1,119 @@
+<div transition:persist="neural-bg" aria-hidden="true" class="pointer-events-none fixed inset-0 z-[-1] overflow-hidden">
+  <div class="grid-overlay absolute inset-0"></div>
+  <div
+    class="absolute -top-40 left-1/2 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-violet-500/20 blur-[120px] dark:bg-violet-600/25"
+  >
+  </div>
+  <div
+    class="absolute top-[40%] -right-40 h-[420px] w-[420px] animate-float rounded-full bg-cyan-400/15 blur-[120px] dark:bg-cyan-500/10"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 -left-40 h-[380px] w-[380px] animate-float rounded-full bg-emerald-400/10 blur-[120px] [animation-delay:-4s]"
+  >
+  </div>
+  <canvas id="neural-canvas" class="absolute inset-0 h-full w-full opacity-70"></canvas>
+</div>
+
+<script>
+  type Node = { x: number; y: number; vx: number; vy: number; r: number }
+
+  const canvas = document.getElementById("neural-canvas") as HTMLCanvasElement | null
+  const ctx = canvas?.getContext("2d")
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+  if (canvas && ctx) {
+    let nodes: Node[] = []
+    let width = 0
+    let height = 0
+    const mouse = { x: -9999, y: -9999 }
+    const LINK_DIST = 140
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
+
+    const resize = () => {
+      width = window.innerWidth
+      height = window.innerHeight
+      canvas.width = width * dpr
+      canvas.height = height * dpr
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+      const count = Math.min(90, Math.floor((width * height) / 16000))
+      nodes = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r: Math.random() * 1.6 + 0.6,
+      }))
+    }
+
+    const draw = () => {
+      const dark = document.documentElement.classList.contains("dark")
+      const node = dark ? "196, 181, 253" : "109, 40, 217"
+      const link = dark ? "139, 92, 246" : "124, 58, 237"
+      const pulse = dark ? "34, 211, 238" : "8, 145, 178"
+
+      ctx.clearRect(0, 0, width, height)
+
+      for (const n of nodes) {
+        if (!reduceMotion) {
+          n.x += n.vx
+          n.y += n.vy
+          if (n.x < 0 || n.x > width) n.vx *= -1
+          if (n.y < 0 || n.y > height) n.vy *= -1
+        }
+      }
+
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i]
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j]
+          const dx = a.x - b.x
+          const dy = a.y - b.y
+          const d = Math.hypot(dx, dy)
+          if (d < LINK_DIST) {
+            ctx.strokeStyle = `rgba(${link}, ${(1 - d / LINK_DIST) * 0.25})`
+            ctx.lineWidth = 0.6
+            ctx.beginPath()
+            ctx.moveTo(a.x, a.y)
+            ctx.lineTo(b.x, b.y)
+            ctx.stroke()
+          }
+        }
+
+        // Connections to the cursor light up like activations
+        const md = Math.hypot(a.x - mouse.x, a.y - mouse.y)
+        if (md < LINK_DIST * 1.4) {
+          ctx.strokeStyle = `rgba(${pulse}, ${(1 - md / (LINK_DIST * 1.4)) * 0.6})`
+          ctx.lineWidth = 0.8
+          ctx.beginPath()
+          ctx.moveTo(a.x, a.y)
+          ctx.lineTo(mouse.x, mouse.y)
+          ctx.stroke()
+        }
+
+        ctx.fillStyle = `rgba(${node}, 0.8)`
+        ctx.beginPath()
+        ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2)
+        ctx.fill()
+      }
+
+      if (!reduceMotion) requestAnimationFrame(draw)
+    }
+
+    window.addEventListener("resize", () => {
+      resize()
+      if (reduceMotion) draw()
+    })
+    window.addEventListener("pointermove", (e) => {
+      mouse.x = e.clientX
+      mouse.y = e.clientY
+    })
+    document.addEventListener("pointerleave", () => {
+      mouse.x = -9999
+      mouse.y = -9999
+    })
+
+    resize()
+    draw()
+  }
+</script>

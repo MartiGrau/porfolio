@@ -1,0 +1,60 @@
+---
+const CAPABILITIES = [
+  {
+    icon: "🤖",
+    title: "LLMs & AI Agents",
+    text: "Agents and assistants that reason, call tools and act on real business systems, built with MCP and function calling.",
+    accent: "from-violet-500/20",
+  },
+  {
+    icon: "📚",
+    title: "RAG & Knowledge",
+    text: "Retrieval pipelines that ground LLMs on company data, with evaluation loops to keep answers accurate.",
+    accent: "from-cyan-500/20",
+  },
+  {
+    icon: "🎨",
+    title: "Generative Vision",
+    text: "Diffusion models, GANs and conditioning strategies for controllable, spatially aware image generation.",
+    accent: "from-pink-500/20",
+  },
+  {
+    icon: "☁️",
+    title: "MLOps & Cloud",
+    text: "Dockerized services, auto-scaling inference and parallel training on AWS (SageMaker, Lambda, ECS, S3).",
+    accent: "from-orange-500/20",
+  },
+  {
+    icon: "🧪",
+    title: "Fine-tuning & R&D",
+    text: "Model scouting, fast experimentation and fine-tuning on domain data to get the most out of state-of-the-art models.",
+    accent: "from-emerald-500/20",
+  },
+  {
+    icon: "🧭",
+    title: "AI Strategy & Leadership",
+    text: "AI roadmaps tied to business value, multidisciplinary teams, and turning complex systems into clear decisions.",
+    accent: "from-yellow-500/20",
+  },
+]
+---
+
+<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  {
+    CAPABILITIES.map(({ icon, title, text, accent }, i) => (
+      <article
+        class="reveal glass spotlight group p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/10"
+        style={`--delay: ${i * 70}ms`}
+      >
+        <div class={`absolute inset-x-0 top-0 h-24 bg-gradient-to-b ${accent} to-transparent opacity-60 transition-opacity group-hover:opacity-100`} />
+        <div class="relative">
+          <span class="flex size-11 items-center justify-center rounded-xl bg-white/70 text-2xl ring-1 ring-black/5 dark:bg-white/5 dark:ring-white/10">
+            {icon}
+          </span>
+          <h3 class="mt-4 text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{text}</p>
+        </div>
+      </article>
+    ))
+  }
+</div>
