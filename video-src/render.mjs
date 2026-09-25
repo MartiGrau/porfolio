@@ -30,7 +30,7 @@ const FPS = 30
 const MOTION_SAMPLES = 4
 const ALL = ["agents", "rag", "vision", "mlops", "finetune", "strategy"]
 // Moment used as the poster image (seconds)
-const POSTER = { agents: 5.9, rag: 5.6, vision: 5.6, mlops: 4.9, finetune: 6.0, strategy: 5.4 }
+const POSTER = { agents: 5.9, rag: 5.6, vision: 5.1, mlops: 4.9, finetune: 6.0, strategy: 5.4 }
 
 const args = process.argv.slice(2)
 const flag = (name) => {
