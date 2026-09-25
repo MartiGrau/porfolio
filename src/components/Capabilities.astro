@@ -1,60 +1,185 @@
 ---
+const base = import.meta.env.BASE_URL
+
+// Each capability has a short looping animation rendered from code in /video-src
 const CAPABILITIES = [
   {
     icon: "🤖",
     title: "LLMs & AI Agents",
     text: "Agents and assistants that reason, call tools and act on real business systems, built with MCP and function calling.",
     accent: "from-violet-500/20",
+    video: "agents",
   },
   {
     icon: "📚",
     title: "RAG & Knowledge",
     text: "Retrieval pipelines that ground LLMs on company data, with evaluation loops to keep answers accurate.",
     accent: "from-cyan-500/20",
+    video: "rag",
   },
   {
     icon: "🎨",
     title: "Generative Vision",
     text: "Diffusion models, GANs and conditioning strategies for controllable, spatially aware image generation.",
     accent: "from-pink-500/20",
+    video: "vision",
   },
   {
     icon: "☁️",
     title: "MLOps & Cloud",
     text: "Dockerized services, auto-scaling inference and parallel training on AWS (SageMaker, Lambda, ECS, S3).",
     accent: "from-orange-500/20",
+    video: "mlops",
   },
   {
     icon: "🧪",
     title: "Fine-tuning & R&D",
     text: "Model scouting, fast experimentation and fine-tuning on domain data to get the most out of state-of-the-art models.",
     accent: "from-emerald-500/20",
+    video: "finetune",
   },
   {
     icon: "🧭",
     title: "AI Strategy & Leadership",
     text: "AI roadmaps tied to business value, multidisciplinary teams, and turning complex systems into clear decisions.",
     accent: "from-yellow-500/20",
+    video: "strategy",
   },
 ]
 ---
 
 <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
   {
-    CAPABILITIES.map(({ icon, title, text, accent }, i) => (
+    CAPABILITIES.map(({ icon, title, text, accent, video }, i) => (
       <article
-        class="reveal glass spotlight group p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/10"
+        class="reveal glass spotlight group flex flex-col transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/10"
         style={`--delay: ${i * 70}ms`}
       >
-        <div class={`absolute inset-x-0 top-0 h-24 bg-gradient-to-b ${accent} to-transparent opacity-60 transition-opacity group-hover:opacity-100`} />
-        <div class="relative">
-          <span class="flex size-11 items-center justify-center rounded-xl bg-white/70 text-2xl ring-1 ring-black/5 dark:bg-white/5 dark:ring-white/10">
-            {icon}
+        <button
+          type="button"
+          class="cap-media relative block aspect-[16/10] w-full overflow-hidden bg-[#07060f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-violet-500"
+          data-video={`${base}/videos/${video}`}
+          data-title={title}
+          aria-label={`Watch the ${title} animation`}
+        >
+          <video
+            class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+            poster={`${base}/videos/${video}.webp`}
+            muted
+            loop
+            playsinline
+            preload="none"
+            disablepictureinpicture
+            aria-hidden="true"
+            tabindex="-1"
+            width="1280"
+            height="800"
+          />
+          <span class="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-[#07060f]/60 to-transparent" />
+          <span class="pointer-events-none absolute bottom-2.5 right-2.5 flex size-8 items-center justify-center rounded-full bg-black/50 text-white/80 opacity-0 ring-1 ring-white/20 backdrop-blur transition group-hover:opacity-100 group-focus-within:opacity-100">
+            <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+            </svg>
           </span>
-          <h3 class="mt-4 text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
-          <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{text}</p>
+        </button>
+        <div class="relative flex-1 p-6">
+          <div class={`pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b ${accent} to-transparent opacity-60 transition-opacity group-hover:opacity-100`} />
+          <div class="relative">
+            <h3 class="flex items-center gap-2.5 text-lg font-semibold text-gray-900 dark:text-white">
+              <span class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-white/70 text-xl ring-1 ring-black/5 dark:bg-white/5 dark:ring-white/10">
+                {icon}
+              </span>
+              {title}
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{text}</p>
+          </div>
         </div>
       </article>
     ))
   }
 </div>
+
+<dialog
+  id="cap-lightbox"
+  class="w-[min(1100px,calc(100vw-2rem))] max-w-none overflow-hidden rounded-2xl border border-white/10 bg-[#07060f] p-0 text-white shadow-2xl shadow-violet-500/20 backdrop:bg-black/70 backdrop:backdrop-blur-sm"
+>
+  <div class="flex items-center justify-between px-4 py-3">
+    <p class="font-mono text-sm text-gray-300" data-lightbox-title></p>
+    <form method="dialog">
+      <button class="flex size-8 items-center justify-center rounded-full text-gray-300 transition hover:bg-white/10 hover:text-white" aria-label="Close">
+        <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </form>
+  </div>
+  <video class="block aspect-[16/10] w-full bg-[#07060f]" muted loop playsinline controls width="1280" height="800"></video>
+</dialog>
+
+<script>
+  const setup = () => {
+    const media = document.querySelectorAll<HTMLButtonElement>(".cap-media")
+    const dialog = document.getElementById("cap-lightbox") as HTMLDialogElement | null
+    if (!media.length || !dialog) return
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData === true
+    const autoplay = !reduceMotion && !saveData
+
+    // H.264 for Safari and most browsers, VP9 as a fallback for builds without it
+    const setSources = (video: HTMLVideoElement, url: string) => {
+      video.replaceChildren(
+        ...[
+          ["mp4", "video/mp4"],
+          ["webm", "video/webm"],
+        ].map(([ext, type]) => Object.assign(document.createElement("source"), { src: `${url}.${ext}`, type }))
+      )
+      video.load()
+    }
+
+    const load = (button: HTMLButtonElement) => {
+      const video = button.querySelector("video")
+      if (video && !video.dataset.loaded) {
+        video.dataset.loaded = "true"
+        setSources(video, button.dataset.video ?? "")
+      }
+      return video
+    }
+
+    // Only fetch and play the loops that are actually on screen
+    if (autoplay && "IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            const video = entry.isIntersecting ? load(entry.target as HTMLButtonElement) : entry.target.querySelector("video")
+            if (!video) continue
+            if (entry.isIntersecting) video.play().catch(() => {})
+            else video.pause()
+          }
+        },
+        { threshold: 0.35 }
+      )
+      media.forEach((button) => io.observe(button))
+    }
+
+    const big = dialog.querySelector("video") as HTMLVideoElement
+    const title = dialog.querySelector("[data-lightbox-title]") as HTMLElement
+    media.forEach((button) => {
+      button.addEventListener("click", () => {
+        title.textContent = button.dataset.title ?? ""
+        setSources(big, button.dataset.video ?? "")
+        dialog.showModal()
+        big.play().catch(() => {})
+      })
+    })
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) dialog.close()
+    })
+    dialog.addEventListener("close", () => {
+      big.pause()
+      big.replaceChildren()
+      big.load()
+    })
+  }
+  document.addEventListener("astro:page-load", setup)
+</script>
